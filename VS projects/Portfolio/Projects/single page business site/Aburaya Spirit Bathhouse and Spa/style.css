@@ -1,0 +1,1318 @@
+/* ===================================================================
+   ABURAYA GRAND BATHHOUSE & SPIRIT SPA (油屋)
+   Spirited Away — Imperial Onsen, Cinnabar & Gold Theme
+   Expansive Full-Width Layout (1200px – 1280px Standard)
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Noto+Serif+JP:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Imperial Color Palette — Spirited Away Bathhouse */
+  --bg-lacquer-black: #0c080a;
+  --bg-deep-crimson: #160c10;
+  --bg-surface: #1c1116;
+  --bg-card: rgba(26, 16, 21, 0.88);
+  --bg-card-hover: rgba(36, 22, 30, 0.95);
+
+  /* Cinnabar & Vermilion Accents */
+  --cinnabar-red: #d32f2f;
+  --cinnabar-bright: #f43f5e;
+  --cinnabar-glow: rgba(229, 57, 53, 0.45);
+  --vermilion: #e63946;
+  --shrine-red: #991b1b;
+
+  /* Imperial Gold Leaf & Warm Lantern Glow */
+  --gold-leaf: #d4af37;
+  --gold-bright: #ffd700;
+  --gold-warm: #f59e0b;
+  --gold-amber: #b45309;
+  --gold-glow: rgba(212, 175, 55, 0.4);
+
+  /* Spirit Waters & Jade Accents */
+  --onsen-jade: #0d9488;
+  --onsen-cyan: #14b8a6;
+  --onsen-foam: #ccfbf1;
+  --onsen-glow: rgba(13, 148, 136, 0.35);
+
+  /* Typography Colors */
+  --text-pure: #ffffff;
+  --text-primary: #fdf2f4;
+  --text-secondary: #e2cbd2;
+  --text-muted: #a38992;
+  --text-gold: #fde047;
+
+  /* Borders & Highlights */
+  --border-gold: rgba(212, 175, 55, 0.28);
+  --border-gold-bright: rgba(255, 215, 0, 0.55);
+  --border-crimson: rgba(211, 47, 47, 0.32);
+  --border-glass: rgba(255, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-decorative: 'Cinzel Decorative', 'Noto Serif JP', serif;
+  --font-heading: 'Cinzel', 'Noto Serif JP', serif;
+  --font-kanji: 'Noto Serif JP', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout & Spacing */
+  --container-max-width: 1260px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-bathhouse: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 40px rgba(211, 47, 47, 0.15);
+  --shadow-gold: 0 10px 30px -5px rgba(212, 175, 55, 0.3);
+  --shadow-glow: 0 0 25px rgba(229, 57, 53, 0.5);
+
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-lacquer-black);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  /* Traditional Japanese shoji lattice and spirit fog overlay */
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(211, 47, 47, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(212, 175, 55, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(13, 148, 136, 0.12) 0%, transparent 55%),
+    linear-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 54px 54px, 54px 54px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Atmospheric Ambient Glow Orbs */
+.spirit-glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  animation: spiritPulse 12s ease-in-out infinite alternate;
+}
+
+.orb-lantern-red {
+  top: -80px;
+  right: -50px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(211, 47, 47, 0.4), transparent 70%);
+}
+
+.orb-gold-leaf {
+  top: 40%;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent 70%);
+  animation-delay: -6s;
+}
+
+.orb-onsen-jade {
+  bottom: 5%;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.25), transparent 70%);
+  animation-delay: -3s;
+}
+
+@keyframes spiritPulse {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+  50% { transform: scale(1.12) translate(15px, 20px); opacity: 0.65; }
+  100% { transform: scale(0.95) translate(-15px, -15px); opacity: 0.45; }
+}
+
+/* ===================================================================
+   STICKY TOP NAVIGATION HEADER
+   =================================================================== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(12, 8, 10, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+}
+
+.nav-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(211, 47, 47, 0.15);
+  border: 1px solid var(--border-crimson);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 7px 15px;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.back-link:hover {
+  background: var(--cinnabar-red);
+  color: #fff;
+  border-color: var(--cinnabar-bright);
+  box-shadow: var(--shadow-glow);
+  transform: translateX(-3px);
+}
+
+.nav-links-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-links-row a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links-row a i {
+  color: var(--gold-leaf);
+  font-size: 0.82rem;
+  transition: var(--transition);
+}
+
+.nav-links-row a:hover {
+  color: var(--gold-bright);
+}
+
+.nav-links-row a:hover i {
+  color: var(--cinnabar-bright);
+  transform: translateY(-2px);
+}
+
+.nav-links-row a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cinnabar-red), var(--gold-leaf));
+  transition: width 0.25s ease;
+}
+
+.nav-links-row a:hover::after {
+  width: 100%;
+}
+
+.realm-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--border-gold);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+
+.pulsing-lantern-dot {
+  width: 9px;
+  height: 9px;
+  background-color: var(--cinnabar-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cinnabar-bright);
+  animation: lanternGlow 1.8s infinite alternate;
+}
+
+@keyframes lanternGlow {
+  0% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 6px var(--cinnabar-red); }
+  100% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 16px var(--cinnabar-bright); }
+}
+
+.realm-status-text {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold-leaf);
+  letter-spacing: 0.04em;
+}
+
+/* ===================================================================
+   EXPANSIVE MAIN CONTENT WRAPPER (1200px – 1280px Standard)
+   =================================================================== */
+.business-wrapper {
+  max-width: var(--container-max-width);
+  margin: 36px auto 70px auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.business-grand-card {
+  background: rgba(20, 12, 16, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-bathhouse);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-grand-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cinnabar-red), var(--gold-bright), var(--onsen-jade), var(--cinnabar-red));
+  background-size: 300% 100%;
+  animation: grandBorderFlow 8s ease infinite;
+}
+
+@keyframes grandBorderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===================================================================
+   HERO SPLIT GRID (EXPANSIVE 2-COLUMN)
+   =================================================================== */
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+  margin-bottom: 56px;
+}
+
+/* Left Hero Presentation Box */
+.hero-visual-col {
+  position: relative;
+}
+
+.aburaya-emblem-box {
+  background: linear-gradient(145deg, #24141c 0%, #160a10 100%);
+  border: 2px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 40px 32px;
+  position: relative;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(211, 47, 47, 0.15);
+  overflow: hidden;
+  text-align: center;
+}
+
+.aburaya-emblem-box::after {
+  content: '油';
+  position: absolute;
+  right: -25px;
+  bottom: -35px;
+  font-family: var(--font-kanji);
+  font-size: 14rem;
+  font-weight: 900;
+  color: rgba(212, 175, 55, 0.04);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.bathhouse-pagoda-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #851818 0%, #3e0c0c 100%);
+  border: 2px solid var(--gold-leaf);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px rgba(211, 47, 47, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.3);
+  animation: emblemFloat 5s ease-in-out infinite;
+}
+
+@keyframes emblemFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.kanji-banner {
+  font-family: var(--font-kanji);
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  color: var(--cinnabar-bright);
+  text-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+  margin-bottom: 6px;
+}
+
+.emblem-title {
+  font-family: var(--font-decorative);
+  font-size: 1.85rem;
+  color: var(--gold-bright);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.emblem-tagline {
+  font-size: 0.96rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 380px;
+  margin: 0 auto 22px auto;
+}
+
+.emblem-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.emblem-chip {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--border-gold);
+  color: var(--text-gold);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.boiler-direct-badge {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(13, 148, 136, 0.18);
+  border: 1px solid var(--onsen-jade);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--onsen-foam);
+}
+
+/* Right Hero Content Column */
+.hero-content-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(211, 47, 47, 0.18);
+  border: 1px solid var(--border-crimson);
+  color: var(--cinnabar-bright);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-decorative);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--text-pure);
+  margin-bottom: 14px;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: 1.12rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.story-box {
+  background: rgba(12, 8, 10, 0.65);
+  border-left: 3px solid var(--gold-leaf);
+  border-top: 1px solid var(--border-glass);
+  border-right: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 22px 24px;
+  margin-bottom: 28px;
+}
+
+.story-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--gold-leaf);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.story-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.btn-primary-onsen {
+  background: linear-gradient(135deg, var(--cinnabar-red) 0%, #b71c1c 100%);
+  border: 1px solid var(--border-gold-bright);
+  color: #ffffff;
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 18px rgba(211, 47, 47, 0.45);
+  transition: var(--transition);
+}
+
+.btn-primary-onsen:hover {
+  background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(229, 57, 53, 0.6);
+  color: #ffffff;
+}
+
+.btn-secondary-token {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-bright);
+  padding: 13px 26px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.btn-secondary-token:hover {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: var(--gold-bright);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Quick Business Metrics Row */
+.hero-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: rgba(14, 9, 12, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item:not(:last-child) {
+  border-right: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.stat-num {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--gold-bright);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.stat-lbl {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===================================================================
+   SECTION HEADERS
+   =================================================================== */
+.section-header-wrap {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cinnabar-bright);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.section-heading {
+  font-family: var(--font-decorative);
+  font-size: 2.2rem;
+  color: var(--text-pure);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.section-subtext {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===================================================================
+   SECTION 1: THE IMPERIAL ONSEN BATHS (2x2 Expansive Grid)
+   =================================================================== */
+.baths-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 64px;
+}
+
+.bath-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  position: relative;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.bath-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--cinnabar-red), var(--gold-leaf));
+  transition: var(--transition);
+}
+
+.bath-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-gold-bright);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+.bath-card:hover::before {
+  width: 6px;
+  background: linear-gradient(180deg, var(--cinnabar-bright), var(--gold-bright));
+}
+
+.bath-icon-box {
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle, #2d131b 0%, #17090f 100%);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--gold-bright);
+  box-shadow: inset 0 0 12px rgba(212, 175, 55, 0.25);
+  transition: var(--transition);
+}
+
+.bath-card:hover .bath-icon-box {
+  transform: scale(1.08) rotate(3deg);
+  border-color: var(--gold-bright);
+  color: #ffffff;
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.bath-content {
+  flex: 1;
+}
+
+.bath-tier-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.tier-sovereign {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--gold-bright);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+}
+
+.tier-boiler {
+  background: rgba(229, 57, 53, 0.18);
+  color: var(--cinnabar-bright);
+  border: 1px solid rgba(229, 57, 53, 0.35);
+}
+
+.tier-sky {
+  background: rgba(20, 184, 166, 0.15);
+  color: var(--onsen-cyan);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+}
+
+.tier-vip {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.bath-name {
+  font-family: var(--font-heading);
+  font-size: 1.28rem;
+  color: var(--text-pure);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.bath-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.bath-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bath-feature-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bath-feature-pill i {
+  color: var(--gold-leaf);
+  font-size: 0.7rem;
+}
+
+/* ===================================================================
+   SECTION 2: KAMAJI'S BOILER ROOM & BATH TOKENS (Interactive Grid)
+   =================================================================== */
+.tokens-section {
+  background: linear-gradient(160deg, rgba(20, 11, 15, 0.9) 0%, rgba(12, 7, 9, 0.95) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tokens-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.token-card {
+  background: #23151c;
+  border: 2px solid #5a3825;
+  border-radius: var(--radius-sm);
+  padding: 24px 18px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+  cursor: pointer;
+  /* Authentic wooden plaque styling */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.token-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #0f0a0d;
+  border: 1.5px solid #d4af37;
+  border-radius: 50%;
+}
+
+.token-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--gold-bright);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.35);
+  background: #2e1a24;
+}
+
+.token-kanji {
+  font-family: var(--font-kanji);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--gold-bright);
+  margin-top: 10px;
+  margin-bottom: 6px;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.token-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--text-pure);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.token-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.token-boiler-pipe {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--cinnabar-bright);
+  background: rgba(211, 47, 47, 0.15);
+  border: 1px solid rgba(211, 47, 47, 0.3);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+/* ===================================================================
+   SECTION 3: SPIRIT BANQUET & DELICACIES
+   =================================================================== */
+.feasts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 64px;
+}
+
+.feast-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.feast-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--cinnabar-bright);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(211, 47, 47, 0.25);
+}
+
+.feast-icon-ring {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3d151c 0%, #1c0a10 100%);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--cinnabar-bright);
+  transition: var(--transition);
+}
+
+.feast-card:hover .feast-icon-ring {
+  color: var(--gold-bright);
+  border-color: var(--gold-bright);
+  transform: rotate(6deg) scale(1.1);
+}
+
+.feast-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--text-pure);
+  margin-bottom: 8px;
+}
+
+.feast-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.feast-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold-leaf);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===================================================================
+   SECTION 4: SPIRIT SCROLLS & TESTIMONIALS (3-Column)
+   =================================================================== */
+.guestbook-section {
+  margin-bottom: 64px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: var(--transition);
+}
+
+.testimonial-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-gold-bright);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+}
+
+.testimonial-stars {
+  color: var(--gold-bright);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 4px;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.testimonial-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  padding-top: 14px;
+}
+
+.author-spirit-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-bright);
+  font-size: 1rem;
+}
+
+.author-info h4 {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  color: var(--text-pure);
+  margin-bottom: 2px;
+}
+
+.author-info p {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================================
+   SECTION 5: THE SPIRIT RESERVATION LEDGER FORM
+   =================================================================== */
+.ledger-form-card {
+  background: linear-gradient(145deg, #1f1218 0%, #130a0f 100%);
+  border: 2px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 38px 42px;
+  position: relative;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+.form-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.form-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--gold-bright);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yubaba-seal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-kanji);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cinnabar-bright);
+  background: rgba(211, 47, 47, 0.15);
+  border: 1px solid var(--border-crimson);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(12, 8, 10, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text-pure);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  background: rgba(20, 12, 16, 0.95);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #6d5b63;
+}
+
+.form-submit-row {
+  margin-top: 14px;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ledger-btn {
+  background: linear-gradient(135deg, var(--cinnabar-red) 0%, #991b1b 100%);
+  border: 1px solid var(--border-gold-bright);
+  color: #ffffff;
+  padding: 14px 34px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.45);
+  transition: var(--transition);
+}
+
+.ledger-btn:hover {
+  background: linear-gradient(135deg, #e53935 0%, #b71c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(229, 57, 53, 0.6);
+}
+
+/* ===================================================================
+   SECTION 6: HOURS, BOUNDARY LAWS & LOCATION
+   =================================================================== */
+.info-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+  margin-bottom: 48px;
+}
+
+.info-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+
+.info-box:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-gold-bright);
+  transform: translateY(-3px);
+}
+
+.info-box-icon {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 16px auto;
+  border-radius: 50%;
+  background: rgba(211, 47, 47, 0.15);
+  border: 1px solid var(--border-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cinnabar-bright);
+  font-size: 1.4rem;
+}
+
+.info-box h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--gold-bright);
+  margin-bottom: 8px;
+}
+
+.info-box p {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+}
+
+.info-highlight {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* ===================================================================
+   BUSINESS FOOTER
+   =================================================================== */
+.business-footer {
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-warning-banner {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-copy a {
+  color: var(--gold-bright);
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition);
+  border-bottom: 1px dotted var(--gold-bright);
+}
+
+.footer-copy a:hover {
+  color: var(--cinnabar-bright);
+  border-bottom-color: var(--cinnabar-bright);
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN (EXPANSIVE STANDARD TO MOBILE)
+   =================================================================== */
+@media (max-width: 1100px) {
+  .hero-split-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .baths-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tokens-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feasts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 18px;
+  }
+
+  .nav-links-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .business-grand-card {
+    padding: 24px 18px;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .tokens-grid,
+  .feasts-grid,
+  .info-section,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-submit-row {
+    justify-content: stretch;
+  }
+
+  .ledger-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

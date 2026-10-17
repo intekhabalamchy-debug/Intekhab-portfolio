@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'ABYSSE | The Midnight Trench — The Complete Oceanic Depth Cartography</title>
+  <meta name="description"
+    content="An expansive, luxury editorial deep-sea exhibition charting 32+ living creatures, geological thresholds, and bioluminescent adaptations from the surface to Challenger Deep (10,928m)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="floodlight-off">
+  <!-- Deep Sea Marine Snow & Bioluminescence Canvas -->
+  <canvas id="marine-snow-canvas"></canvas>
+
+  <!-- Ambient Hydrothermal Trench Glows -->
+  <div class="abyss-glow glow-cyan"></div>
+  <div class="abyss-glow glow-hadal"></div>
+
+  <!-- Fixed Submersible HUD Header -->
+  <header class="hud-header">
+    <div class="hud-left">
+      <a href="../../index.html" class="hud-back-btn" id="return-portfolio-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Return to Portfolio</span>
+      </a>
+      <div class="hud-divider"></div>
+      <div class="hud-exhibition-brand">
+        <span class="hud-monogram">L’A</span>
+        <div class="hud-titles">
+          <span class="hud-main-title">L’ABYSSE</span>
+          <span class="hud-sub-title">Haute Oceanographic Monograph</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hud-right">
+      <!-- Submersible Floodlight Control -->
+      <button class="hud-control-btn" id="floodlight-toggle-btn" aria-label="Toggle Submersible Floodlights"
+        title="Toggle Deep-Sea Floodlights">
+        <i class="fa-regular fa-lightbulb"></i>
+        <span class="btn-text">Floodlights</span>
+        <span class="status-indicator" id="floodlight-indicator">OFF</span>
+      </button>
+
+      <!-- Hydrophone Audio Drone Toggle -->
+      <button class="hud-control-btn" id="hydrophone-toggle-btn" aria-label="Toggle Hydrophone Ambient Sound"
+        title="Toggle Sub-aquatic Hydrophone Acoustic Drone">
+        <i class="fa-solid fa-water"></i>
+        <span class="btn-text">Hydrophone</span>
+        <span class="status-indicator" id="hydrophone-indicator">MUTE</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Exhibition Canvas & Narrative Flow -->
+  <main class="exhibition-container">
+
+    <!-- =================================================================
+           HERO: THE DESCENT BEGINS
+           ================================================================= -->
+    <section class="exhibit-hero" id="hero-surface">
+      <div class="hero-curatorial-meta">
+        <span class="meta-tag"><i class="fa-solid fa-compass"></i> MONOGRAPH NO. 08</span>
+        <span class="meta-tag">32 LIFE FORMS &amp; MILESTONES</span>
+        <span class="meta-tag">0m &rarr; 10,928m</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-pretitle">An Exploration of the Eternal Dark</span>
+        L’ABYSSE
+      </h1>
+
+      <p class="hero-lead">
+        Inspired by oceanic cartography, descend through every meter of Earth’s global ocean. From the sunlit epipelagic
+        surface down past the Titanic to the deepest vertebrate and the crushing floor of Challenger Deep.
+      </p>
+
+      <!-- Quick Depth Jump Navigation -->
+      <nav class="zone-nav-chips" aria-label="Jump to oceanic depth tier">
+        <a href="#specimen-atlantic-salmon" class="zone-chip active">0m • Sunlit Boundary</a>
+        <a href="#specimen-twilight-boundary" class="zone-chip">200m • Twilight Zone</a>
+        <a href="#specimen-midnight-point" class="zone-chip">1,000m • Midnight Realm</a>
+        <a href="#specimen-titanic-wreck" class="zone-chip">3,810m • Titanic Wreck</a>
+        <a href="#specimen-abyssal-plain-start" class="zone-chip">4,000m • Abyssal Plains</a>
+        <a href="#specimen-hadal-trench-entry" class="zone-chip">6,000m • Hadal Chasms</a>
+        <a href="#specimen-challenger-deep" class="zone-chip">10,928m • Challenger Deep</a>
+      </nav>
+
+      <!-- Hero Feature Plate: Siphonophore Colony -->
+      <div class="hero-plate-card">
+        <div class="hero-image-wrap">
+          <img src="assets/hero-siphonophore.jpg"
+            alt="Deep Sea Siphonophore emitting cyan bioluminescence in pitch black waters" class="hero-img"
+            loading="eager" />
+          <div class="hero-img-badge">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Plate I: Bathyal Siphonophore Colony (Praya dubia)</span>
+          </div>
+        </div>
+        <div class="hero-plate-caption">
+          <div class="plate-coordinates">
+            <span>LAT: 11°22.4' N</span>
+            <span>LONG: 142°35.5' E</span>
+            <span>DEPTH: 2,400 METERS</span>
+          </div>
+          <p>
+            Colonies of gelatinous zooids reaching up to 40 meters in length—longer than a blue whale—drifting through
+            the bathypelagic currents while pulsing cyan luciferin bioluminescence to lure prey in the total darkness.
+          </p>
+        </div>
+      </div>
+
+      <!-- Filter & Taxa Controller Console -->
+      <div class="life-filter-console glass-panel">
+        <div class="filter-header">
+          <span class="filter-title"><i class="fa-solid fa-sliders"></i> TAXONOMIC &amp; DEPTH FILTERS</span>
+          <span class="filter-counter">32 EXPEDITION ENTRIES</span>
+        </div>
+        <div class="filter-buttons-row">
+          <button class="life-filter-btn active" data-category="all">All Depth Records (32)</button>
+          <button class="life-filter-btn" data-category="bioluminescent"><i class="fa-solid fa-lightbulb"></i>
+            Bioluminescent Only</button>
+          <button class="life-filter-btn" data-category="cephalopod"><i class="fa-solid fa-ghost"></i> Cephalopods
+            (Squid &amp; Octopus)</button>
+          <button class="life-filter-btn" data-category="fish"><i class="fa-solid fa-fish-fins"></i> Deep Fishes &amp;
+            Sharks</button>
+          <button class="life-filter-btn" data-category="crustacean"><i class="fa-solid fa-spider"></i> Crustaceans
+            &amp; Arthropods</button>
+          <button class="life-filter-btn" data-category="milestone"><i class="fa-solid fa-monument"></i> Historic
+            Milestones &amp; Vents</button>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <span class="scroll-cue-text">SCROLL TO DESCEND INTO THE DEPTHS</span>
+        <div class="scroll-cue-line"></div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+           CONTINUOUS OCEANIC DEPTH TIMELINE (0m TO 10,928m)
+           All 32 creatures and milestones rendered here
+           ================================================================= -->
+    <section class="deep-sea-timeline-wrapper">
+      <div class="timeline-central-spine"></div>
+      <div class="timeline-items-flow" id="deep-sea-timeline-container">
+        <!-- Dynamically populated by script.js -->
+      </div>
+    </section>
+
+    <!-- =================================================================
+           HADAL SUBDUCTION CONSOLE (CHALLENGER DEEP FINALE)
+           ================================================================= -->
+    <section class="ocean-zone-section" id="hadal-terminal-breakdown" data-zone="HADOPELAGIC" data-depth="10928">
+      <div class="hadal-console-card glass-panel">
+        <div class="hadal-grid">
+          <div class="hadal-data-col">
+            <div class="chasm-terminal-header">
+              <span class="status-blip"></span>
+              <span>CHALLENGER DEEP SOUNDING • SONAR BATHYMETRY TERMINUS</span>
+            </div>
+            <h3 class="chasm-title">The Terminal Chasm (10,928m)</h3>
+            <p class="chasm-text">
+              At the base of the Mariana Trench, the Pacific Plate is pushed beneath the Mariana Plate. At 10,928
+              meters, water density is increased by 5 percent due to extreme compressive force. Ordinary vertebrate
+              enzymes would disintegrate without high concentrations of TMAO (trimethylamine N-oxide), the biological
+              osmolyte that stabilizes cellular proteins against crushing barometric collapse.
+            </p>
+
+            <div class="extremophile-chips">
+              <div class="ext-chip">
+                <i class="fa-solid fa-dna"></i>
+                <div>
+                  <strong>Piezophiles</strong>
+                  <span>Enzymes optimized solely for &gt;1000 atm pressure</span>
+                </div>
+              </div>
+              <div class="ext-chip">
+                <i class="fa-solid fa-gem"></i>
+                <div>
+                  <strong>Mariana Snailfish (8,178m)</strong>
+                  <span>The deepest living vertebrate on planet Earth</span>
+                </div>
+              </div>
+              <div class="ext-chip">
+                <i class="fa-solid fa-shield"></i>
+                <div>
+                  <strong>Aluminum Amphipod Shells</strong>
+                  <span>Hirondellea gigas armor bio-synthesized from sediment clay</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hadal-gauge-col">
+            <div class="gauge-display-circle">
+              <div class="circle-inner">
+                <span class="circle-label">MAX PRESSURE</span>
+                <span class="circle-val">1,093</span>
+                <span class="circle-unit">BAR</span>
+                <span class="circle-sub">15,850 PSI</span>
+              </div>
+            </div>
+            <div class="chasm-elevation-graph">
+              <div class="trench-profile-wireframe">
+                <svg viewBox="0 0 400 180" class="trench-svg">
+                  <path d="M 0 20 L 100 35 L 170 110 L 200 170 L 230 110 L 300 35 L 400 20" fill="none"
+                    stroke="rgba(0, 240, 255, 0.4)" stroke-width="2"></path>
+                  <line x1="200" y1="0" x2="200" y2="170" stroke="rgba(0, 255, 163, 0.6)" stroke-dasharray="3,3"
+                    stroke-width="1.5"></line>
+                  <circle cx="200" cy="170" r="5" fill="#00ffa3" class="ping-circle"></circle>
+                  <text x="208" y="165" fill="#00ffa3" font-family="'JetBrains Mono', monospace"
+                    font-size="11">10,928m</text>
+                  <text x="20" y="32" fill="#718096" font-family="'JetBrains Mono', monospace" font-size="9">Abyssal
+                    Floor (4000m)</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+           EPILOGUE: CURATORIAL MANIFESTO & RETURN
+           ================================================================= -->
+    <section class="exhibit-epilogue">
+      <div class="epilogue-panel glass-panel">
+        <div class="epilogue-icon">
+          <i class="fa-solid fa-anchor"></i>
+        </div>
+        <h2 class="epilogue-heading">The Frontier Yet Unmapped</h2>
+        <p class="epilogue-text">
+          We possess higher resolution maps of the topography of Mars and Venus than the floor of our own global ocean.
+          Every expedition to the abyssal trenches reveals species whose cellular mechanics redefine our understanding
+          of biology and the limits of life in the cosmos.
+        </p>
+        <div class="epilogue-actions">
+          <a href="../../index.html" class="btn-portfolio-glow">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Return to Portfolio</span>
+          </a>
+          <button class="btn-secondary-glow" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <i class="fa-solid fa-arrow-up"></i>
+            <span>Ascend to Surface (0m)</span>
+          </button>
+        </div>
+      </div>
+
+      <footer class="exhibition-footer">
+        <div class="footer-meta-brand">
+          <span>L’ABYSSE • HAUTE OCEANOGRAPHIC EXHIBITION</span>
+          <span>DESIGNED &amp; ENGINEERED BY <a href="../../index.html">INTEKHAB ALAM CHOWDHURY</a></span>
+        </div>
+        <div class="footer-fine-print">
+          Data curated from NOAA Ocean Exploration, MBARI, HADES (Hadal Ecosystem Studies), and Challenger Deep
+          Bathymetric Surveys.
+        </div>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- =================================================================
+         INTERACTIVE SPECIMEN ANATOMY MODAL
+         ================================================================= -->
+  <div class="specimen-modal-backdrop" id="specimen-modal" aria-hidden="true" role="dialog">
+    <div class="specimen-modal-card glass-panel" role="document">
+      <button class="modal-close-btn" onclick="closeSpecimenModal()" aria-label="Close inspection modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-content-grid">
+        <div class="modal-visual-pane">
+          <img src="assets/hero-siphonophore.jpg" alt="Specimen Inspection" id="modal-specimen-img" class="modal-img" />
+          <div class="modal-tag-row">
+            <span class="modal-depth-badge" id="modal-specimen-depth">DEPTH: --</span>
+            <span class="modal-lum-badge" id="modal-specimen-lum">BIOLUMINESCENCE</span>
+          </div>
+        </div>
+
+        <div class="modal-data-pane">
+          <div class="modal-rank" id="modal-specimen-order">TAXONOMIC RANK</div>
+          <h3 class="modal-title" id="modal-specimen-name">Specimen Name</h3>
+          <h4 class="modal-latin" id="modal-specimen-latin">Scientific Name</h4>
+          <p class="modal-desc" id="modal-specimen-desc">Detailed biological analysis...</p>
+
+          <div class="modal-breakdown-box">
+            <div class="breakdown-title"><i class="fa-solid fa-dna"></i> ADAPTATION MECHANICS</div>
+            <ul class="breakdown-list" id="modal-specimen-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <div class="modal-footer-meta">
+            <span id="modal-specimen-spec">SPECIMEN ID: ABY-01</span>
+            <button class="modal-action-btn" onclick="closeSpecimenModal()">Close Examination</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>
